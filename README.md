@@ -3,8 +3,17 @@ The LOw COmplexity annotator.
 
 This is not quite ready for broad use.
 
+To build:
 ```
-Usage: ./loco [options] <input.fa>
+git clone https://github.com/DanielOlson/loco.git
+cd loco
+make
+./loco [options] <input.fa>
+```
+
+Usage:
+```
+Usage: loco [options] <input.fa>
 
 Options:
   -h, --help    Show this help message
@@ -22,3 +31,4 @@ Options:
   -r, --raw     Output raw entropy values
   -o, --out <value>     Output file path (default: stdout)
 ```
+Default thresholds are meant to mask 1% of random (nonbiological) sequence with 60% AT-richness.
