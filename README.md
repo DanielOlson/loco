@@ -8,7 +8,6 @@ To build:
 git clone https://github.com/DanielOlson/loco.git
 cd loco
 make
-./loco [options] <input.fa>
 ```
 
 Usage:
