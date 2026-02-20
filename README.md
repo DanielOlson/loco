@@ -2,7 +2,7 @@
 The LOw COmplexity annotator.
 
 This is not quite ready for broad use.
-
+------------
 To build:
 ```
 git clone https://github.com/DanielOlson/loco.git
