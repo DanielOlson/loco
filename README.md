@@ -31,3 +31,8 @@ Options:
   -o, --out <value>     Output file path (default: stdout)
 ```
 Default thresholds are meant to mask 1% of random (nonbiological) sequence with 60% AT-richness.
+
+For protein (masks 1%): `--aa -1 2.010597 -2 3.110749 -3 3.564625 -4 3.820651`
+For protein (masks 2.5%): `--aa -1 2.067322 -2 3.158371 -3 3.601106 -4 3.850146`
+for protein (masks 5%): `--aa -1 2.123229 -2 3.176482 -3 3.601106 -4 3.850146`
+Maybe suggested for protein? `--aa -1 2.067322 -2 3.158371 -3 3.564625 -4 3.820651`
