@@ -1,6 +1,8 @@
 # loco
 
 The **LO**w **CO**mplexity annotator.
+This is **NOT** ready for broad use. This README is AI-slop. This **IS** ready for careful use. Contact with questions.
+
 
 loco identifies and masks low-complexity regions in DNA and protein sequences
 using multi-channel entropy analysis. It combines traditional k-mer frequency
