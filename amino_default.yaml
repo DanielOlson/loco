@@ -1,0 +1,17 @@
+# loco --fit calibration
+# global masking rate: 0.1160
+fit: false
+aa: true
+
+channels:
+  - ww 1 21 1.99811  # rate: 0.0250, unique: 0.0034
+  - ww 2 11 2.75617  # rate: 0.0250, unique: 0.0034
+  - ww 3 11 3.3446  # rate: 0.0249, unique: 0.0029
+  - ww 3 11 2.27187 spacing=5  # rate: 0.0247, unique: 0.0137
+  - ww 4 11 3.68773  # rate: 0.0250, unique: 0.0053
+  - wh ./py/models/amino_k2.bin 11 2.09926  # rate: 0.0250, unique: 0.0018
+  - wh ./py/models/amino_k3.bin 11 2.11443  # rate: 0.0250, unique: 0.0029
+  - wh ./py/models/amino_k4.bin 11 2.10689  # rate: 0.0250, unique: 0.0059
+  - wh ./py/models/amino_k2.bin 11 2.09857 spacing=1  # rate: 0.0250, unique: 0.0019
+  - wh ./py/models/amino_k3.bin 11 2.12046 spacing=5  # rate: 0.0250, unique: 0.0082
+  - wh ./py/models/amino_k4.bin 7 2.09678 spacing=17  # rate: 0.0250, unique: 0.0143

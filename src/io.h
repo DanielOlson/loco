@@ -17,10 +17,9 @@ void output_entropies(FILE *out_file, BioSequence *sequence,
 void output_bed_from_mask(FILE *out_file, BioSequence *sequence, _Bool *mask);
 
 void output_fasta_masked(FILE *out_file, BioSequence *sequence, _Bool *mask,
-                         _Bool use_x);
+                         _Bool use_x, _Bool use_aa);
 
 void output_raw_entropies(FILE *out_file, BioSequence *sequence,
-                          Entropy *ent_1, Entropy *ent_2, Entropy *ent_3,
-                          Entropy *ent_4);
+                          Entropy **ent_channels, int num_channels);
 
 #endif

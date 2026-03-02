@@ -1,0 +1,17 @@
+fit: true
+aa: true
+
+channels:
+  # kmer channels paired by kmer_units
+  - ww 1 21 0.025
+  - ww 2 11 0.025
+  - ww 3 11 0.025
+  - ww 3 11 0.025 spacing=5
+  - ww 4 11 0.025
+
+  - wh ./py/models/amino_k2.bin 11 0.025
+  - wh ./py/models/amino_k3.bin 11 0.025
+  - wh ./py/models/amino_k4.bin 11 0.025
+  - wh ./py/models/amino_k2.bin 11 0.025 spacing=1
+  - wh ./py/models/amino_k3.bin 11 0.025 spacing=5
+  - wh ./py/models/amino_k4.bin 7 0.025 spacing=17

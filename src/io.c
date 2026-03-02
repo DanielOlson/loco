@@ -170,6 +170,12 @@ void output_entropies(FILE *out_file, BioSequence *sequence,
 
 void output_bed_from_mask(FILE *out_file, BioSequence *sequence,
                           _Bool *mask) {
+  /* Extract sequence identifier (first whitespace-delimited token) */
+  const char *name = sequence->sequence_name;
+  int name_len = 0;
+  while (name[name_len] && name[name_len] != ' ' && name[name_len] != '\t')
+    name_len++;
+
   uint64_t region_start = 0;
   int in_region = 0;
 
@@ -181,7 +187,7 @@ void output_bed_from_mask(FILE *out_file, BioSequence *sequence,
       }
     } else {
       if (in_region) {
-        fprintf(out_file, "%s\t%llu\t%llu\n", sequence->sequence_name,
+        fprintf(out_file, "%.*s\t%llu\t%llu\n", name_len, name,
                 (unsigned long long)region_start, (unsigned long long)i);
         in_region = 0;
       }
@@ -189,14 +195,14 @@ void output_bed_from_mask(FILE *out_file, BioSequence *sequence,
   }
 
   if (in_region) {
-    fprintf(out_file, "%s\t%llu\t%llu\n", sequence->sequence_name,
+    fprintf(out_file, "%.*s\t%llu\t%llu\n", name_len, name,
             (unsigned long long)region_start,
             (unsigned long long)sequence->sequence_length);
   }
 }
 
 void output_fasta_masked(FILE *out_file, BioSequence *sequence, _Bool *mask,
-                         _Bool use_x) {
+                         _Bool use_x, _Bool use_aa) {
   fprintf(out_file, ">%s\n", sequence->sequence_name);
   uint64_t seq_idx = 0;
   for (uint64_t i = 0; i < sequence->raw_block_length; i++) {
@@ -206,7 +212,7 @@ void output_fasta_masked(FILE *out_file, BioSequence *sequence, _Bool *mask,
     } else {
       if (seq_idx < sequence->sequence_length && mask[seq_idx]) {
         if (use_x) {
-          c = 'X';
+          c = use_aa ? 'X' : 'N';
         } else {
           if (c >= 'A' && c <= 'Z') {
             c = c + 32;
@@ -221,11 +227,15 @@ void output_fasta_masked(FILE *out_file, BioSequence *sequence, _Bool *mask,
 }
 
 void output_raw_entropies(FILE *out_file, BioSequence *sequence,
-                          Entropy *ent_1, Entropy *ent_2, Entropy *ent_3,
-                          Entropy *ent_4) {
+                          Entropy **ent_channels, int num_channels) {
   fprintf(out_file, ">%s\n", sequence->sequence_name);
   for (uint64_t i = 0; i < sequence->sequence_length; i++) {
-    fprintf(out_file, "%f %f %f %f\n", ent_1[i], ent_2[i], ent_3[i], ent_4[i]);
+    for (int c = 0; c < num_channels; c++) {
+      if (c > 0)
+        fputc(' ', out_file);
+      fprintf(out_file, "%f", ent_channels[c][i]);
+    }
+    fputc('\n', out_file);
   }
 }
 

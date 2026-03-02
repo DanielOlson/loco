@@ -1,0 +1,10 @@
+# loco --fit calibration
+# global masking rate: 0.0943
+fit: false
+aa: false
+
+channels:
+  - ww 1 20 1.0
+  - ww 2 15 2.05
+  - ww 3 13 2.9
+  - ww 4 12 3.47
