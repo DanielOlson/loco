@@ -1,11 +1,15 @@
 CC      = gcc
 CFLAGS  = -std=c17 -Wall -Wextra -pedantic
 TARGET  = loco
+VERSION = 0.1.0
 
 SRCDIR  = src
 BUILDDIR = build
 SRCS    = $(wildcard $(SRCDIR)/*.c)
 OBJS    = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
+
+GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+CFLAGS += -DVERSION=\"$(VERSION)\" -DGIT_COMMIT=\"$(GIT_COMMIT)\"
 
 .PHONY: all debug clean test
 
