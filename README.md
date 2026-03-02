@@ -11,7 +11,7 @@ operations (OR, AND, SUM, W_MIN, W_MAX, W_BLUR) for flexible masking
 strategies.
 
 Pre-trained embedding models are available at:
-https://huggingface.co/datasets/DanielROlson/loco
+[https://huggingface.co/datasets/DanielROlson/loco](https://huggingface.co/datasets/DanielROlson/loco/tree/main)
 
 ## Building
 
