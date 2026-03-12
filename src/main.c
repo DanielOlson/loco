@@ -181,7 +181,7 @@ int main(int argc, const char **argv) {
   add_argument(&arguments,
                (Arg){.short_name = 'x',
                      .bool_buffer = &use_x,
-                     .help_string = "X-masking (default: lowercase)"});
+                     .help_string = "Hard-masking: N for DNA, X for amino acids (default: lowercase soft-masking)"});
 
   add_argument(&arguments, (Arg){.short_name = 'r',
                                  .long_name = "raw",
